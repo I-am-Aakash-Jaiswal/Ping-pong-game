@@ -1,0 +1,103 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+
+/*  this is root element to keep css variables*/
+:root{
+    /* these are css variable */
+    --hue: 200;
+    --saturation : 50%; 
+    --foreground-color: hsl(var(--hue), var(--saturation),80%);
+    --background-color: hsl(var(--hue), var(--saturation),20%);
+}
+
+
+body{
+    margin:0;
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+
+.paddle{
+    --position: 50;
+    position: absolute;
+    background-color: var(--foreground-color);
+    width: 1vh;
+    height: 25vh;
+    border-radius: 0.5vh;
+    top: calc(var(--position) *1vh);
+    transform: translateY(-50%);
+}
+.paddle.left{
+left:1vw;
+}
+.paddle.right{
+    right: 1vw;
+}
+.ball{
+   --x:50;
+   --y: 50;
+    position: absolute;
+    background-color: var(--foreground-color);
+    left: calc(var(--x) *1vw);
+    top: calc(var(--y) *1vh);
+    transform: translate(-50%, -50%);
+    width: 2.5vh;
+    height: 2.5vh;
+    border-radius: 50%;
+}
+
+.score{
+    display: flex;
+    justify-content: z;
+    font-weight: bold ;
+    font-size: 7vh;
+    color: var(--foreground-color);
+}
+.score > *{
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 2vh;
+    margin: 1vh 0;
+    opacity: 0.5;
+    width: 50%;
+}
+
+.score > :first-child{
+  text-align: right;
+    border-right: .5vh solid var(--foreground-color);
+}
+.score-heading{
+    display: flex;
+    justify-content: center;
+    font-weight: bold ;
+    font-size: 2vh;
+    color: var(--foreground-color);
+    opacity: 0.5;
+}
+.points{
+padding: 0 0.3vh;
+margin: 0.3vh 0.2vh;
+width: 50%;
+text-align: right;
+}
+.defeats{
+    width: 50%;
+padding: 0 0.3vh;
+margin: 0.3vh 0.2vh;
+margin-left: 4vh;
+
+}
+#player-score{
+    display: none;
+}
+#computer-score{
+    width:100%;
+}
+.click{
+    color: var(--foreground-color);
+    opacity: 0.5;
+    position:absolute;
+    bottom: 2vh;
+    right: 10vh;
+}
